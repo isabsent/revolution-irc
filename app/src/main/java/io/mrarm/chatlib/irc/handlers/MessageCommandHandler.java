@@ -97,7 +97,7 @@ public class MessageCommandHandler implements CommandHandler {
         int iof = data.indexOf(' ');
         String command = iof == -1 ? data : data.substring(0, iof);
         String args = data.substring(iof + 1);
-        if (command.equals("ACTION")) {
+        if (command.equals("ACTION")) {//https://en.wikichip.org/wiki/mirc/commands/action
             for (String channel : targetChannels) {
                 ChannelData channelData = getChannelData(connection, sender, channel);
                 if (channelData == null)
@@ -114,16 +114,16 @@ public class MessageCommandHandler implements CommandHandler {
                 return;
             connection.getServerStatusData().addMessage(new StatusMessageInfo(sender.getNick(), new Date(), StatusMessageInfo.MessageType.CTCP_VERSION, null));
             connection.getApi().sendNotice(sender.getNick(), "\01VERSION " + ctcpVersionReply + "\01", null, null);
-        } else if (command.equals("DCC")) {
+        } else if (command.equals("DCC")) {//https://en.wikichip.org/wiki/mirc/commands/dcc
             if (args.startsWith("RESUME ") && dccServerManager != null && rateLimitCtcpCommand()) {
                 args = args.substring(7);
                 int filenameLen = DCCUtils.getFilenameLength(args);
                 String filename = args.substring(0, filenameLen);
                 String[] otherArgs = args.substring(filenameLen + (args.charAt(filenameLen) == ' ' ? 1 : 0)).split(" ");
-                if (dccServerManager.continueUpload(connection, sender.getNick(), filename,
-                        Integer.parseInt(otherArgs[0]), Long.parseLong(otherArgs[1]))) {
-                    connection.getApi().sendMessage(sender.getNick(), "\01DCC ACCEPT " + filename + " " +
-                            otherArgs[0] + " " + otherArgs[1] + "\01", null, null);
+                if (dccServerManager.continueUpload(connection, sender.getNick(), filename, Integer.parseInt(otherArgs[0]), Long.parseLong(otherArgs[1]))) {
+                    connection.getApi().sendMessage(sender.getNick(),
+                            "\01DCC ACCEPT " + filename + " " + otherArgs[0] + " " + otherArgs[1] + "\01",
+                            null, null);
                 }
             }
             if (args.startsWith("SEND ") && dccClientManager != null) {

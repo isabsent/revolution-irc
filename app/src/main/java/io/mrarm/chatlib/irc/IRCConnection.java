@@ -49,7 +49,7 @@ public class IRCConnection extends ServerConnectionApi {
         getServerConnectionData().setMessageStorageApi(new SimpleMessageStorageApi());
     }
 
-    private void sendCommandRaw(String string, boolean flush) throws IOException {
+    private void sendCommandRaw(String string, boolean flush) throws IOException {//Send 6
         synchronized (socketOutputStream) {
             byte[] data = (string + '\n').getBytes(charset);
             if (data.length > 512)
@@ -68,7 +68,7 @@ public class IRCConnection extends ServerConnectionApi {
         }
     }
 
-    private void sendCommand(boolean flush, String command, boolean isLastArgFullLine, String... args) throws IOException {
+    private void sendCommand(boolean flush, String command, boolean isLastArgFullLine, String... args) throws IOException {//Send 5
         StringBuilder builder = new StringBuilder();
         builder.append(command); // TODO: validate
         builder.append(' ');
@@ -88,7 +88,7 @@ public class IRCConnection extends ServerConnectionApi {
     }
 
     @Override
-    public void sendCommand(String command, boolean isLastArgFullLine, String... args) throws IOException {
+    public void sendCommand(String command, boolean isLastArgFullLine, String... args) throws IOException {//Send 4
         sendCommand(true, command, isLastArgFullLine, args);
     }
 
@@ -315,7 +315,7 @@ public class IRCConnection extends ServerConnectionApi {
         }, callback, errorCallback);
     }
 
-    private void sendMessageInternal(String cmd, String channel, String message) throws IOException {
+    private void sendMessageInternal(String cmd, String channel, String message) throws IOException {//Send 3
         try {
             List<String> params = new ArrayList<>();
             params.add(channel);
@@ -328,8 +328,8 @@ public class IRCConnection extends ServerConnectionApi {
         sendCommand(cmd, true, channel, message);
     }
 
-    public Future<Void> sendMessage(String channel, String message, boolean notice, boolean split,
-                                     ResponseCallback<Void> callback, ResponseErrorCallback errorCallback) {
+    //https://ru.wikipedia.org/wiki/Список_IRC-команд
+    public Future<Void> sendMessage(String channel, String message, boolean notice, boolean split, ResponseCallback<Void> callback, ResponseErrorCallback errorCallback) {//Send  2
         return executor.queue(() -> {
             String cmd = notice ? "NOTICE" : "PRIVMSG";
             if (split) {
@@ -344,14 +344,12 @@ public class IRCConnection extends ServerConnectionApi {
     }
 
     @Override
-    public Future<Void> sendMessage(String channel, String message, ResponseCallback<Void> callback,
-                                    ResponseErrorCallback errorCallback) {
+    public Future<Void> sendMessage(String channel, String message, ResponseCallback<Void> callback, ResponseErrorCallback errorCallback) {
         return sendMessage(channel, message, false, true, callback, errorCallback);
     }
 
     @Override
-    public Future<Void> sendNotice(String channel, String message, ResponseCallback<Void> callback,
-                                   ResponseErrorCallback errorCallback) {
+    public Future<Void> sendNotice(String channel, String message, ResponseCallback<Void> callback, ResponseErrorCallback errorCallback) {//Send 1
         return sendMessage(channel, message, true, true, callback, errorCallback);
     }
 
@@ -381,7 +379,7 @@ public class IRCConnection extends ServerConnectionApi {
                         request.getServerPass());
             connectRequestNick(request.getNickList(), 0);
             sendCommand("USER", true, request.getUser(), String.valueOf(request.getUserMode()), "*", request.getRealName());
-            System.out.println("Sent inital commands");
+            System.out.println("Sent initial commands");
         } catch (Throwable t) {
             disconnect(false);
             socket = null;

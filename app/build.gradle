@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.mrarm.irc.build.settings-builder'
+apply plugin: 'com.chaquo.python' //https://chaquo.com/chaquopy/doc/current/android.html
 
 android {
     compileSdkVersion 28
@@ -14,6 +15,13 @@ android {
             useSupportLibrary true
         }
         vectorDrawables.useSupportLibrary = true
+
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+//        python {
+//            buildPython "C:/Python36/python.exe"
+//        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
