@@ -52,6 +52,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.mrarm.irc.config.ServerCertificateManager;
 import io.mrarm.irc.config.ServerConfigData;
 import io.mrarm.irc.config.ServerConfigManager;
@@ -62,7 +63,7 @@ import io.mrarm.irc.view.AutoRunCommandListEditText;
 import io.mrarm.irc.view.StaticLabelTextInputLayout;
 import io.mrarm.irc.view.ChipsEditText;
 
-public class EditServerActivity extends ThemedActivity {
+public class EditServerActivity extends AppCompatActivity {
 
     private static String TAG = "EditServerActivity";
 

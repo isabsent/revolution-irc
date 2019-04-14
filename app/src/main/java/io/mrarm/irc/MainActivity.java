@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.view.GravityCompat;
@@ -57,7 +59,7 @@ import io.mrarm.irc.util.WarningHelper;
 import io.mrarm.irc.view.ChipsEditText;
 import io.mrarm.irc.view.LockableDrawerLayout;
 
-public class MainActivity extends ThemedActivity implements IRCApplication.ExitCallback {
+public class MainActivity extends AppCompatActivity implements IRCApplication.ExitCallback {
 
     public static final String ARG_SERVER_UUID = "server_uuid";
     public static final String ARG_CHANNEL_NAME = "channel";

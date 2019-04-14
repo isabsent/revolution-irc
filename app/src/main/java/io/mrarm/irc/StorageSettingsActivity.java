@@ -1,11 +1,13 @@
 package io.mrarm.irc;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
 
-public class StorageSettingsActivity extends ThemedActivity {
+public class StorageSettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

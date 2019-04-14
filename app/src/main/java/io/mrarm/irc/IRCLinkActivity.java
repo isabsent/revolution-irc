@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +22,7 @@ import io.mrarm.irc.config.ServerConfigData;
 import io.mrarm.irc.config.ServerConfigManager;
 import io.mrarm.irc.util.AdvancedDividerItemDecoration;
 
-public class IRCLinkActivity extends ThemedActivity {
+public class IRCLinkActivity extends AppCompatActivity {
 
     private static final int REQUEST_ADD_SERVER = 100;
 

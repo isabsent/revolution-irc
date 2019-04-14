@@ -4,11 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.mrarm.irc.dialog.ChannelSearchDialog;
 import io.mrarm.irc.util.StyledAttributesHelper;
 import io.mrarm.irc.view.ListSearchView;
 
-public class ShareTargetActivity extends ThemedActivity implements ListSearchView.QueryListener {
+public class ShareTargetActivity extends AppCompatActivity implements ListSearchView.QueryListener {
 
     private ChannelSearchDialog.SuggestionsAdapter mAdapter;
 

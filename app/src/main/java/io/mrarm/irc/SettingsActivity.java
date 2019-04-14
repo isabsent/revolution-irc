@@ -2,6 +2,8 @@ package io.mrarm.irc;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import android.view.MenuItem;
@@ -12,7 +14,7 @@ import java.util.List;
 
 import io.mrarm.irc.setting.SettingsCategoriesFragment;
 import io.mrarm.irc.setting.fragment.CommandSettingsFragment;
-import io.mrarm.irc.setting.fragment.InterfaceSettingsFragment;
+//import io.mrarm.irc.setting.fragment.InterfaceSettingsFragment;
 import io.mrarm.irc.setting.fragment.NamedSettingsFragment;
 import io.mrarm.irc.setting.fragment.NotificationSettingsFragment;
 import io.mrarm.irc.setting.fragment.ReconnectSettingsFragment;
@@ -21,7 +23,7 @@ import io.mrarm.irc.setting.fragment.UserSettingsFragment;
 import io.mrarm.irc.setup.BackupActivity;
 import io.mrarm.irc.util.SimpleCounter;
 
-public class SettingsActivity extends ThemedActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     private SimpleCounter mRequestCodeCounter = new SimpleCounter(1);
 
@@ -89,7 +91,7 @@ public class SettingsActivity extends ThemedActivity {
             List<Item> ret = new ArrayList<>();
             ret.add(new Item(R.string.pref_header_user, R.drawable.ic_user, UserSettingsFragment.class));
             ret.add(new Item(R.string.pref_header_reconnect, R.drawable.ic_refresh, ReconnectSettingsFragment.class));
-            ret.add(new Item(R.string.pref_header_interface, R.drawable.ic_appearance, InterfaceSettingsFragment.class));
+//            ret.add(new Item(R.string.pref_header_interface, R.drawable.ic_appearance, InterfaceSettingsFragment.class));
             ret.add(new Item(R.string.pref_header_notifications, R.drawable.ic_notifications, NotificationSettingsFragment.class));
             ret.add(new Item(R.string.pref_header_command_aliases, R.drawable.ic_keyboard, CommandSettingsFragment.class));
             ret.add(new Item(R.string.pref_header_storage, R.drawable.ic_storage, StorageSettingsFragment.class));

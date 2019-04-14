@@ -1,6 +1,8 @@
 package io.mrarm.irc;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,7 +17,7 @@ import java.util.UUID;
 
 import io.mrarm.irc.config.ServerCertificateManager;
 
-public class CertificateManagerActivity extends ThemedActivity {
+public class CertificateManagerActivity extends AppCompatActivity {
 
     public static final String ARG_SERVER_UUID = "server_uuid";
 

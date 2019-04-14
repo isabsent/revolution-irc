@@ -3,6 +3,8 @@ package io.mrarm.irc;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +27,7 @@ import java.util.UUID;
 import io.mrarm.chatlib.dto.ChannelList;
 import io.mrarm.irc.view.RecyclerViewScrollbar;
 
-public class ChannelListActivity extends ThemedActivity {
+public class ChannelListActivity extends AppCompatActivity {
 
     public static final String ARG_SERVER_UUID = "server_uuid";
 
