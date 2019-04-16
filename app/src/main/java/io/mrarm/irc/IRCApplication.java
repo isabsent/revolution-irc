@@ -32,11 +32,11 @@ public class IRCApplication extends Application implements Application.ActivityL
             System.out.println("Python says " + sys.get("version").toString());                    //sys.version
             System.out.println("Python says " + sys.callAttr("is_finalizing").toBoolean());   //sys.is_finalizing()
 
-            PyObject zipfile = Python.getInstance().getModule("zipfile");                                         //import zipfile
-            PyObject zf = zipfile.callAttr("ZipFile","example.zip");                                      //zf = zipfile.ZipFile("example.zip")
-            zf.put("debug", 2);                                                                                //zf.debug = 2
-            zf.get("comment");                                                                                        //zf.comment
-            zf.callAttr("write", "filename.txt", new Kwarg("compress_type", zipfile.get("ZIP_STORED")));  //zf.write("filename.txt", compress_type=zipfile.ZIP_STORED);
+//            PyObject zipfile = Python.getInstance().getModule("zipfile");                                         //import zipfile
+//            PyObject zf = zipfile.callAttr("ZipFile","example.zip");                                      //zf = zipfile.ZipFile("example.zip")
+//            zf.put("debug", 2);                                                                                //zf.debug = 2
+//            zf.get("comment");                                                                                        //zf.comment
+//            zf.callAttr("write", "filename.txt", new Kwarg("compress_type", zipfile.get("ZIP_STORED")));  //zf.write("filename.txt", compress_type=zipfile.ZIP_STORED);
         }
 
         SettingsHelper.getInstance(this);
