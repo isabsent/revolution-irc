@@ -8,13 +8,16 @@ import com.chaquo.python.Kwarg;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
+import com.chaquo.python.android.PyApplication;
+
+//import org.python.util.PythonInterpreter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.mrarm.irc.config.SettingsHelper;
 
-public class IRCApplication extends Application implements Application.ActivityLifecycleCallbacks {
+public class IRCApplication extends PyApplication implements Application.ActivityLifecycleCallbacks {
     private List<Activity> mActivities = new ArrayList<>();
     private List<PreExitCallback> mPreExitCallbacks = new ArrayList<>();
     private List<ExitCallback> mExitCallbacks = new ArrayList<>();
@@ -23,21 +26,23 @@ public class IRCApplication extends Application implements Application.ActivityL
     public void onCreate() {
         super.onCreate();
 
-        if (!Python.isStarted()) {
-            Python.start(new AndroidPlatform(this));
-
+//        if (!Python.isStarted()) {
 //            https://chaquo.com/chaquopy/doc/6.0/java.html
             PyObject sys = Python.getInstance().getModule("sys");                               //import sys
             System.out.println("Python says " + sys.get("maxsize").toLong());                      //sys.maxsize
             System.out.println("Python says " + sys.get("version").toString());                    //sys.version
             System.out.println("Python says " + sys.callAttr("is_finalizing").toBoolean());   //sys.is_finalizing()
 
+            PyObject iotexample = Python.getInstance().getModule("iotexample");
+            iotexample.callAttr("run_example_global");
+            System.out.println("iotexample runs");
+
 //            PyObject zipfile = Python.getInstance().getModule("zipfile");                                         //import zipfile
 //            PyObject zf = zipfile.callAttr("ZipFile","example.zip");                                      //zf = zipfile.ZipFile("example.zip")
 //            zf.put("debug", 2);                                                                                //zf.debug = 2
 //            zf.get("comment");                                                                                        //zf.comment
 //            zf.callAttr("write", "filename.txt", new Kwarg("compress_type", zipfile.get("ZIP_STORED")));  //zf.write("filename.txt", compress_type=zipfile.ZIP_STORED);
-        }
+//        }
 
         SettingsHelper.getInstance(this);
         NotificationManager.createDefaultChannels(this);

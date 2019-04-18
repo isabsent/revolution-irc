@@ -10,6 +10,7 @@ android {
         targetSdkVersion 28
         versionCode 10
         versionName "0.5.2"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
@@ -37,6 +38,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation fileTree(include: ['*.jar'], dir: 'libs')//https://stackoverflow.com/a/37342889
+//    implementation(name: 'jython-standalone-2.7.0', ext: 'jar')
+
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
